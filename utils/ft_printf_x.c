@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_printf_x.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: twei-yo- <twei-yo-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 13:34:34 by twei-yo-          #+#    #+#             */
-/*   Updated: 2024/06/26 13:57:11 by twei-yo-         ###   ########.fr       */
+/*   Created: 2024/06/27 14:57:03 by twei-yo-          #+#    #+#             */
+/*   Updated: 2024/06/30 15:37:26 by twei-yo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-
-int	ft_put_uint(unsigned int nb)
-{
-	long	nb_long;
-	int		count;
-
-	count = 0;
-	nb_long = (long) nb;
-	ft_putnbr_helper(nb_long, &count);
-	return (count);
-}
+#include "../ft_printf.h"
 
 void	ft_put_hexa(unsigned long nb, char format, int *count)
 {
@@ -37,20 +26,6 @@ void	ft_put_hexa(unsigned long nb, char format, int *count)
 		else if (format == 'X')
 			*count += ft_putchar(nb + 55);
 	}
-}
-
-int	ft_put_ptr(void *ptr)
-{
-	unsigned long	address;
-	int				count;
-
-	count = 0;
-	if (ptr == NULL)
-		return (ft_putstr("(nil)"));
-	address = (unsigned long) ptr;
-	count += ft_putstr("0x");
-	count += ft_hexa_ulong(address, 'x');
-	return (count);
 }
 
 int	ft_hexa_uint(unsigned int nb, char format)
@@ -70,18 +45,3 @@ int	ft_hexa_ulong(unsigned long nb, char format)
 	ft_put_hexa(nb, format, &count);
 	return (count);
 }
-/* int main(int argc, char const *argv[])
-{
-	char	*b = "SADSAD";
-	
-	int a = ft_put_uint(4294967295);
-	printf("\n%u", 4294967295);
-	printf("\n%i\n", a);
-	a = ft_hexa_uint(4294967295, 'x');
-	printf("\n%x", 4294967295);
-	printf("\n%i\n", a);
-	a = ft_put_ptr(b);
-	printf("\n%p", b);
-	printf("\n%i\n", a);
-	return 0;
-} */

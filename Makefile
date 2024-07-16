@@ -6,7 +6,7 @@ AR= ar rcs
 RM= rm -rf
 
 CFILES= $(wildcard *.c)
-BSRC= $(wildcard *bonus.c)
+BSRC= $(wildcard *_bonus.c)
 
 all: $(NAME)
 
