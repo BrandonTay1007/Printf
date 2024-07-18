@@ -6,7 +6,7 @@
 /*   By: twei-yo- <twei-yo-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:57:33 by twei-yo-          #+#    #+#             */
-/*   Updated: 2024/07/16 11:43:49 by twei-yo-         ###   ########.fr       */
+/*   Updated: 2024/07/17 22:13:00 by twei-yo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_put_uint(unsigned int nb)
 	return (count);
 }
 
-int	get_unb_len(unsigned int nb)
+int	get_unb_len(unsigned long nb)
 {
 	int	len;
 
@@ -45,18 +45,25 @@ int	get_unb_len(unsigned int nb)
 	}
 	return (len);
 }
+int	print_uint_precision(unsigned int nb, int precision, int len)
+{
+	int	w_c;
 
+	w_c = 0;
+	w_c += ft_pad_width(precision - len, '0');
+	w_c += ft_put_uint(nb);
+	return (w_c);
+}
 int	ft_put_uint_flags(unsigned int nb, struct format *s_f)
 {
 	int	len;
 	int	w_c;
 
 	w_c = 0;
-	len = get_unb_len(nb);
+	len = get_unb_len((unsigned long) nb);
 	if (s_f->right_justify)
 	{
-		w_c += ft_pad_width(s_f->precision - len, '0');
-		w_c += ft_put_uint(nb);
+		w_c += print_uint_precision(nb, s_f->precision, len);
 		w_c += ft_pad_width(s_f->width - w_c, ' ');
 	}
 	else
@@ -65,10 +72,12 @@ int	ft_put_uint_flags(unsigned int nb, struct format *s_f)
 			w_c += ft_pad_width(s_f->width - len, '0');
 		else
 		{
-			w_c += ft_pad_width(s_f->width - s_f->precision - len, ' ');
-			w_c += ft_pad_width(s_f->precision - len, '0');
+			if (s_f->precision >= len)
+				w_c += ft_pad_width(s_f->width - s_f->precision, ' ');
+			else
+				w_c += ft_pad_width(s_f->width - len, ' ');
 		}
-			w_c += ft_put_uint(nb);
+		w_c += print_uint_precision(nb, s_f->precision, len);
 	}
 	return (w_c);
 }
