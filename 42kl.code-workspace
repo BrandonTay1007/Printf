@@ -1,0 +1,45 @@
+{
+	"folders": [
+		{
+			"path": "../get_next_line"
+		},
+		{
+			"path": "../libft"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../mandatory_printf"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.c": "c",
+			"unistd.h": "c",
+			"errno.h": "c",
+			"get_next_line.h": "c",
+			"sstream": "c",
+			"libft.h": "c",
+			"ft_printf.h": "c",
+			"ft_printf_bonus.h": "c",
+			"array": "c",
+			"string_view": "c",
+			"initializer_list": "c",
+			"utility": "c"
+		},
+		"editor.fontLigatures": true, 
+		"editor.fontWeight": "420",
+		"window.closeWhenEmpty": false,
+		"window.autoDetectColorScheme": false,
+		// Controls the font family.
+		"editor.fontFamily": "Fira Code",
+		// Controls the font size.
+		"editor.fontSize": 16,
+		"editor.insertSpaces": true,
+		
+
+
+
+	}
+}

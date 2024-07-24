@@ -6,7 +6,7 @@
 /*   By: twei-yo- <twei-yo-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:57:33 by twei-yo-          #+#    #+#             */
-/*   Updated: 2024/07/23 10:40:08 by twei-yo-         ###   ########.fr       */
+/*   Updated: 2024/07/23 16:36:13 by twei-yo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_put_uint(unsigned int nb)
 	return (count);
 }
 
-int	get_unb_len(unsigned long nb, struct format *s_f)
+int	get_unb_len(unsigned long nb, struct format *s_f, int base)
 {
 	int	len;
 
@@ -44,7 +44,7 @@ int	get_unb_len(unsigned long nb, struct format *s_f)
 	}
 	while (nb > 0)
 	{
-		nb /= 10;
+		nb /= base;
 		len++;
 	}
 	return (len);
@@ -56,7 +56,7 @@ int	ft_put_uint_flags(unsigned int nb, struct format *s_f)
 	int	w_c;
 
 	w_c = 0;
-	len = get_unb_len((unsigned long) nb, s_f);
+	len = get_unb_len((unsigned long) nb, s_f, 10);
 	if (s_f->right_justify)
 	{
 		w_c += ft_pad_width(s_f->precision - len, '0');

@@ -6,7 +6,7 @@
 /*   By: twei-yo- <twei-yo-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:57:01 by twei-yo-          #+#    #+#             */
-/*   Updated: 2024/07/23 10:35:05 by twei-yo-         ###   ########.fr       */
+/*   Updated: 2024/07/23 22:12:32 by twei-yo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	ft_putint_flags(int nb, struct format *s_f)
 		if (s_f->zero_pad && s_f->precision < 0)
 			w_c += print_nbr_sign(nb, s_f);
 		len += w_c;
-		w_c += print_width(s_f, len, nb);
+		w_c += print_width(s_f, len, (long long) nb);
 		w_c += print_num_precison(nb, len, s_f);
 	}
 	return (w_c);

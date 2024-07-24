@@ -61,7 +61,7 @@ void	set_default(struct format *str_format)
 	str_format->space = 0;
 }
 
-int	format_parser(char *str)
+int	format_parser(char *str, void *ptr)
 {
 	int				i;
 	struct format	*str_format;
@@ -74,45 +74,48 @@ int	format_parser(char *str)
 	i += set_width(str + i, str_format);
 	i += set_precision(str + i, str_format);
 	str_format->d_type = *(str + i);
-/* 	printf("precision: %i\n", str_format->precision);
-	printf("width: %i\n", str_format->width);
-	printf("-: %i\n", str_format->right_justify);
-	printf("0: %i\n", str_format->zero_pad);
-	printf("+: %i\n", str_format->plus);
-	printf(" : %i\n", str_format->space);
-	printf("#: %i\n", str_format->hash);
-	printf("d_tpye = %c\n", str_format->d_type); */
-	printf("precision: %i\n", str_format->precision);
-	int s = ft_put_uint_flags(0, str_format);
+	// printf("precision: %i\n", str_format->precision);
+	// printf("width: %i\n", str_format->width);?
+	// printf("-: %i\n", str_format->right_justify);
+	// printf("0: %i\n", str_format->zero_pad);
+	// printf("+: %i\n", str_format->plus);
+	// printf(" : %i\n", str_format->space);
+	// printf("#: %i\n", str_format->hash);
+	// printf("d_tpye = %c\n", str_format->d_type);
+	// printf("precision: %i\n", str_format->precision);
+	int s = ft_put_ptr_flags(ptr, str_format);
 	printf("\n");
 	printf("%i\n", s);
 
-	s = ft_put_uint_flags(INT_MAX, str_format);
-	printf("\n");
-	printf("%i\n", s);
+	// s = ft_hexa_uint_flags(INT_MAX , str_format, str_format->d_type);
+	// printf("\n");
+	// printf("%i\n", s);
 	
-	s = ft_put_uint_flags(INT_MIN, str_format);
-	printf("\n");  
-	printf("%i\n", s);
+	// s = ft_hexa_uint_flags(INT_MIN, str_format, str_format->d_type);
+	// printf("\n");  
+	// printf("%i\n", s);
+
 }
 
 
 int main(int argc, char const *argv[])
 {
-	format_parser("030u");
+	int *ptr;
+	format_parser("p", ptr);
 	printf("--------------\n");
 	
-	int a = printf("%030u", 0);
+	int a = printf("%p", ptr);
 	printf("\n");
 	printf("%i\n", a); 
 
-	a = printf("%030u", INT_MAX);
-	printf("\n");
-	printf("%i\n", a); 
+	// a = printf("%+#-20x", INT_MAX);
+	// printf("\n");
+	// printf("%i\n", a); 
 	
-	a = printf("%030u", INT_MIN);
-	printf("\n");
-	printf("%i\n", a); 
+	// a = printf("%+#-20x", INT_MIN);
+	// printf("\n");
+	// printf("%i\n", a); 
+	
 	return 0;
 }
 

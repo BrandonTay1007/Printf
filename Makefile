@@ -5,14 +5,15 @@ CFLAGS= -c -Wall -Werror -Wextra
 AR= ar rcs
 RM= rm -rf
 
-CFILES= $(wildcard *.c)
+CFILES= utils/*.c libft/libft.a
 BSRC= $(wildcard *_bonus.c)
 
 all: $(NAME)
 
 $(NAME):
-	$(CC) $(CFLAGS) $(CFILES)
-	$(AR) $(NAME) $(CFILES:.c=.o)
+	$(CC) $(CFILES)
+	./a.out
+#$(AR) $(NAME) $(CFILES:.c=.o)
 
 clean:
 	$(RM) $(wildcard *.o)
