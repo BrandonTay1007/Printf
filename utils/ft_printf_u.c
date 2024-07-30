@@ -6,7 +6,7 @@
 /*   By: twei-yo- <twei-yo-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:57:33 by twei-yo-          #+#    #+#             */
-/*   Updated: 2024/07/23 16:36:13 by twei-yo-         ###   ########.fr       */
+/*   Updated: 2024/07/30 09:21:27 by twei-yo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	get_unb_len(unsigned long nb, struct format *s_f, int base)
 	len = 0;
 	if (nb == 0)
 	{
+        if (s_f->d_type == 'p')
+            return (5);
 		if (s_f->precision == 0)	
 			return (0);
 		return (1);

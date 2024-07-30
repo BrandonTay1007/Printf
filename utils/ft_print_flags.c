@@ -6,7 +6,7 @@
 /*   By: twei-yo- <twei-yo-@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 13:49:06 by twei-yo-          #+#    #+#             */
-/*   Updated: 2024/07/23 22:17:36 by twei-yo-         ###   ########.fr       */
+/*   Updated: 2024/07/30 09:54:24 by twei-yo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,15 @@ int	print_width(struct format *s_f, int len, long long nb)
 	w_c = 0;
 	if (s_f->precision >= len)
 			len = s_f->precision;
+    if (s_f->d_type == 'p' && !nb)
+    {
+        return (ft_pad_width(s_f->width - 5, ' '));
+    }
 	if (s_f->d_type == 'x' || s_f->d_type == 'X')
 		if (s_f->hash && nb > 0)
 			len += 2;
 	if (s_f->d_type == 'd' || s_f->d_type == 'i')
-		if ((nb < 0 || s_f->plus || s_f->space))
+		if (nb < 0 || s_f->plus || s_f->space)
 			len++;
 	if (s_f->zero_pad && s_f->precision < 0)
 		w_c += ft_pad_width(s_f->width - len, '0');
